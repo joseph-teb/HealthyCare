@@ -8,7 +8,7 @@ cvar con = mysql.createConnection({
 	password: "yourpassword",
 	database: "mydb"
 });
-// condition function if con and sql select method throwing exception
+// condition function if con is err and sql select method throwing exception
 	con.connect(function(err){
 	if(err) throw err;
 	var sql = "SELECT users.name AS users, products.name AS favorite FROM users LEFT JOIN products ON users.favorite_product = products.id";
