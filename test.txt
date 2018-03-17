@@ -1,0 +1,19 @@
+var mysql = require('mysql'); //node.js require mysql
+var mongo = require('mongodb'); // mongo require for db
+
+// node.js connection to db
+cvar con = mysql.createConnection({
+	host: "localhost",
+	root: "yourusername",
+	password: "yourpassword",
+	database: "mydb"
+});
+// condition function if con and sql select method throwing exception
+	con.connect(function(err){
+	if(err) throw err;
+	var sql = "SELECT users.name AS users, products.name AS favorite FROM users LEFT JOIN products ON users.favorite_product = products.id";
+	con.query(sql, function (err, result) {
+	if(err) throw err;
+	console.log(result);
+	});
+});
